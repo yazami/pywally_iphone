@@ -42,8 +42,8 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSCameraUsageDescription</key>
-	<string>Need video pls. </string>
+	<string>Camera access is required to use this application.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Gotta access</string>
+	<string>Photo Library is required to use this application. </string>
 </dict>
 </plist>
