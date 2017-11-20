@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class View2: UIViewController {
+class View2: UIViewController, AVCapturePhotoCaptureDelegate {
 
     @IBOutlet weak var cameraView: UIView!
     
@@ -70,8 +70,9 @@ class View2: UIViewController {
         do {
             let captureDeviceInput = try AVCaptureDeviceInput(device: currentCamera!)
             captureSession.addInput(captureDeviceInput)
-            photoOutput = AVCapturePhotoOutput()
+            //photoOutput = AVCapturePhotoOutput()
             photoOutput?.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])], completionHandler: nil)
+            //captureSession.addOutput(photoOutput!)
         }
         catch
         {
@@ -86,6 +87,7 @@ class View2: UIViewController {
         cameraPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         cameraPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
         cameraPreviewLayer?.frame = self.view.frame
+        
         self.view.layer.insertSublayer(cameraPreviewLayer!, at: 0)
         
     }
@@ -96,32 +98,24 @@ class View2: UIViewController {
     }
     
     
-    
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     @IBAction func cameraButton_TouchUpInside(_ sender: UIButton) {
-        
-        
-        
-        
+        //let settings = AVCapturePhotoSettings()
+        //photoOutput?.capturePhoto(with: settings, delegate: self)
     }
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
+
+//extension ViewController: AVCapturePhotoCaptureDelegate
+//{
+//    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+//        if let imageData = photo.fileDataRepresentation()
+//        {
+//            print(imageData)
+//        }
+//    }
+//}
+
