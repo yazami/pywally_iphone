@@ -22,7 +22,7 @@ class View2: UIViewController {
     
     var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
     
-    
+    var image: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,7 +115,12 @@ extension View2: AVCapturePhotoCaptureDelegate //monitoring, processing photo, e
         if let imageData = photo.fileDataRepresentation()
         {
             //AVCapturePhoto contains the image data
-            print(imageData)
+            //print(imageData) //to check if image is being passed
+            
+            image = UIImage(data: imageData)
+            
+            performSegue(withIdentifier: "showPhoto_Segue", sender: nil)
+            
         }
     }
     
