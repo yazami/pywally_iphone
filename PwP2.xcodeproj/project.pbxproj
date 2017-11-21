@@ -16,8 +16,6 @@
 		AC21792E1FC3549B0048423C /* View1.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC21792C1FC3549B0048423C /* View1.xib */; };
 		AC2179311FC3558B0048423C /* View2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC21792F1FC3558B0048423C /* View2.swift */; };
 		AC2179321FC3558B0048423C /* View2.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC2179301FC3558B0048423C /* View2.xib */; };
-		AC2179351FC358260048423C /* View3.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2179331FC358260048423C /* View3.swift */; };
-		AC2179361FC358260048423C /* View3.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC2179341FC358260048423C /* View3.xib */; };
 		AC21793B1FC3C81C0048423C /* PwPBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC21793A1FC3C81C0048423C /* PwPBrain.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,8 +31,6 @@
 		AC21792C1FC3549B0048423C /* View1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View1.xib; sourceTree = "<group>"; };
 		AC21792F1FC3558B0048423C /* View2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View2.swift; sourceTree = "<group>"; };
 		AC2179301FC3558B0048423C /* View2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View2.xib; sourceTree = "<group>"; };
-		AC2179331FC358260048423C /* View3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View3.swift; sourceTree = "<group>"; };
-		AC2179341FC358260048423C /* View3.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View3.xib; sourceTree = "<group>"; };
 		AC21793A1FC3C81C0048423C /* PwPBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PwPBrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,8 +65,6 @@
 			isa = PBXGroup;
 			children = (
 				AC21791B1FC350A40048423C /* ViewController.swift */,
-				AC2179331FC358260048423C /* View3.swift */,
-				AC2179341FC358260048423C /* View3.xib */,
 				AC21792F1FC3558B0048423C /* View2.swift */,
 				AC2179301FC3558B0048423C /* View2.xib */,
 				AC21791D1FC350A40048423C /* Main.storyboard */,
@@ -146,7 +140,6 @@
 			files = (
 				AC2179241FC350A40048423C /* LaunchScreen.storyboard in Resources */,
 				AC2179211FC350A40048423C /* Assets.xcassets in Resources */,
-				AC2179361FC358260048423C /* View3.xib in Resources */,
 				AC21792E1FC3549B0048423C /* View1.xib in Resources */,
 				AC2179321FC3558B0048423C /* View2.xib in Resources */,
 				AC21791F1FC350A40048423C /* Main.storyboard in Resources */,
@@ -161,7 +154,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC21791C1FC350A40048423C /* ViewController.swift in Sources */,
-				AC2179351FC358260048423C /* View3.swift in Sources */,
 				AC21793B1FC3C81C0048423C /* PwPBrain.swift in Sources */,
 				AC21792D1FC3549B0048423C /* View1.swift in Sources */,
 				AC21791A1FC350A40048423C /* AppDelegate.swift in Sources */,

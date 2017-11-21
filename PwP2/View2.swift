@@ -13,16 +13,21 @@ class View2: UIViewController {
 
     @IBOutlet weak var cameraView: UIView!
     
+    @IBOutlet weak var recordButtonOutlet: UIButton!
+    
     var captureSession = AVCaptureSession()
     var backCamera: AVCaptureDevice?
     var frontCamera: AVCaptureDevice?
     var currentCamera: AVCaptureDevice?
     
+    var videoFileOutput:AVCaptureMovieFileOutput?
     var photoOutput: AVCapturePhotoOutput?
     
     var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
     
     var image: UIImage?
+    
+    var notStreaming = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,14 +37,12 @@ class View2: UIViewController {
         setupInputOutput() //creating inputs using the capture devices
         setupPreview() //configuring an output object to process captured images
         startRunningCaptureSession()
-        
     }
     
     func setupCaptureSession()
     {
         //change this to vga later or something for video
-        captureSession.sessionPreset = AVCaptureSession.Preset.photo
-        
+        captureSession.sessionPreset = AVCaptureSession.Preset.high
     }
     
     func setupDevice()
@@ -61,7 +64,7 @@ class View2: UIViewController {
                 frontCamera = device
             }
         }
-        
+
         currentCamera = backCamera
     }
     
@@ -70,6 +73,9 @@ class View2: UIViewController {
         do {
             let captureDeviceInput = try AVCaptureDeviceInput(device: currentCamera!)
             captureSession.addInput(captureDeviceInput)
+            videoFileOutput = AVCaptureMovieFileOutput()
+            
+            
             photoOutput = AVCapturePhotoOutput()
             photoOutput?.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])], completionHandler: nil)
             captureSession.addOutput(photoOutput!)
@@ -78,7 +84,6 @@ class View2: UIViewController {
         {
             print(error)
         }
-        
     }
     
     func setupPreview()
@@ -89,7 +94,6 @@ class View2: UIViewController {
         cameraPreviewLayer?.frame = self.view.frame
         
         self.view.layer.insertSublayer(cameraPreviewLayer!, at: 0)
-        
     }
     
     func startRunningCaptureSession()
@@ -97,29 +101,52 @@ class View2: UIViewController {
         captureSession.startRunning()
     }
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    //Pressing the button should start the stream.
     @IBAction func cameraButton_TouchUpInside(_ sender: UIButton) {
-        let settings = AVCapturePhotoSettings()
-        photoOutput?.capturePhoto(with: settings, delegate: self)
+        
+        //REMOVE
+        //let settings = AVCapturePhotoSettings()
+        //photoOutput?.capturePhoto(with: settings, delegate: self)
+        
+        //START SENDING DATA HERE
+        if(notStreaming)
+        {
+            notStreaming = false
+            
+            UIView.animate(withDuration: 0.5, delay: 0.0, options: [.repeat, .autoreverse, .allowUserInteraction], animations: { () -> Void in
+                self.recordButtonOutlet.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+            }, completion: nil)
+        }
+        
+        //STOP SENDING DATA HERE
+        else
+        {
+            notStreaming = true
+            UIView.animate(withDuration: 0.5, delay: 1.0, options: [], animations: { () -> Void in
+                self.recordButtonOutlet.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            }, completion: nil)
+            
+            recordButtonOutlet.layer.removeAllAnimations()
+        }
     }
 }
 
+//REMOVE
 extension View2: AVCapturePhotoCaptureDelegate //monitoring, processing photo, etc.
 {
+    
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let imageData = photo.fileDataRepresentation()
         {
-            //AVCapturePhoto contains the image data
+            //AVCapturePhoto contains the image data.
             //print(imageData) //to check if image is being passed
             
             image = UIImage(data: imageData)
-            
-            performSegue(withIdentifier: "showPhoto_Segue", sender: nil)
+
             
         }
     }
