@@ -19,8 +19,20 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="DnM-OE-bGT">
+                    <rect key="frame" x="37" y="183" width="300" height="300"/>
+                </imageView>
+            </subviews>
             <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="DnM-OE-bGT" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="AtQ-4f-mTt"/>
+                <constraint firstItem="DnM-OE-bGT" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ezi-bA-zGy"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>
+    <resources>
+        <image name="Logo" width="300" height="300"/>
+    </resources>
 </document>

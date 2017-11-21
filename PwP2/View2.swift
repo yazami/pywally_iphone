@@ -35,7 +35,7 @@ class View2: UIViewController {
         setupCaptureSession()
         setupDevice() //configuring the necessare capture devices
         setupInputOutput() //creating inputs using the capture devices
-        setupPreview() //configuring an output object to process captured images
+        setupPreview() 
         startRunningCaptureSession()
     }
     
@@ -74,8 +74,10 @@ class View2: UIViewController {
             let captureDeviceInput = try AVCaptureDeviceInput(device: currentCamera!)
             captureSession.addInput(captureDeviceInput)
             videoFileOutput = AVCaptureMovieFileOutput()
+            captureSession.addOutput(videoFileOutput!)
             
             
+            //REMOVE
             photoOutput = AVCapturePhotoOutput()
             photoOutput?.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])], completionHandler: nil)
             captureSession.addOutput(photoOutput!)
@@ -101,16 +103,9 @@ class View2: UIViewController {
         captureSession.startRunning()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     //Pressing the button should start the stream.
     @IBAction func cameraButton_TouchUpInside(_ sender: UIButton) {
-        
-        //REMOVE
-        //let settings = AVCapturePhotoSettings()
-        //photoOutput?.capturePhoto(with: settings, delegate: self)
         
         //START SENDING DATA HERE
         if(notStreaming)
@@ -135,22 +130,4 @@ class View2: UIViewController {
     }
 }
 
-//REMOVE
-extension View2: AVCapturePhotoCaptureDelegate //monitoring, processing photo, etc.
-{
-    
-    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-        if let imageData = photo.fileDataRepresentation()
-        {
-            //AVCapturePhoto contains the image data.
-            //print(imageData) //to check if image is being passed
-            
-            image = UIImage(data: imageData)
-
-            
-        }
-    }
-    
-    
-}
 
