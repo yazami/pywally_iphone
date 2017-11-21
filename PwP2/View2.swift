@@ -35,7 +35,7 @@ class View2: UIViewController {
         setupCaptureSession()
         setupDevice() //configuring the necessare capture devices
         setupInputOutput() //creating inputs using the capture devices
-        setupPreview() 
+        setupPreview()
         startRunningCaptureSession()
     }
     
@@ -75,12 +75,6 @@ class View2: UIViewController {
             captureSession.addInput(captureDeviceInput)
             videoFileOutput = AVCaptureMovieFileOutput()
             captureSession.addOutput(videoFileOutput!)
-            
-            
-            //REMOVE
-            photoOutput = AVCapturePhotoOutput()
-            photoOutput?.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])], completionHandler: nil)
-            captureSession.addOutput(photoOutput!)
         }
         catch
         {
